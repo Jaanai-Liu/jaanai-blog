@@ -17,7 +17,7 @@
             name = "jaanai-blog";
             src = self;
 
-            nativeBuildInputs = [ pkgs.nodejs_22 pkgs.pnpm pkgs.pnpm.configHook ];
+            nativeBuildInputs = [ pkgs.nodejs_22 pkgs.pnpm pkgs.pnpmConfigHook ];
 
             pnpmDeps = pkgs.fetchPnpmDeps {
               pname = "jaanai-blog";
