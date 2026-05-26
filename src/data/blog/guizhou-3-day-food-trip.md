@@ -1,6 +1,6 @@
 ---
 author: Jaanai Liu
-pubDatetime: 2026-05-26T08:00:00Z
+pubDatetime: 2026-05-25T16:00:00Z
 modDatetime: 2026-05-26T08:00:00Z
 title: 5月贵州 3 天美食行程表
 slug: guizhou-3-day-food-trip
