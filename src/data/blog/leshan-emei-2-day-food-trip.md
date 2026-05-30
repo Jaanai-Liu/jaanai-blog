@@ -1,7 +1,7 @@
 ---
 author: Jaanai Liu
-pubDatetime: 2026-05-30T16:00:00Z
-modDatetime: 2026-05-30T16:00:00Z
+pubDatetime: 2026-05-30T10:00:00Z
+modDatetime: 2026-05-30T10:00:00Z
 title: 乐山峨眉 2 天自驾美食之旅
 slug: leshan-emei-2-day-food-trip
 featured: true
