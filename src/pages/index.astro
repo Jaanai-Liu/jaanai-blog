@@ -15,8 +15,26 @@ import { SOCIALS } from "@/constants";
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const categories = [
+  {
+    name: "NixOS",
+    tag: "nixos",
+    desc: "NixOS 配置、教程与折腾记录",
+  },
+  {
+    name: "项目",
+    tag: "project",
+    desc: "自己开发的软件与工具",
+  },
+  {
+    name: "旅行",
+    tag: "travel",
+    desc: "旅行计划与游记",
+  },
+];
+
+const CATEGORY_LIMIT = 4;
 ---
 
 <Layout>
@@ -67,36 +85,32 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     </section>
 
     {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={[
-            "pt-12 pb-6",
-            { "border-b border-border": recentPosts.length > 0 },
-          ]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-          <ul>
-            {featuredPosts.map(data => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
-            )}
-          </ul>
-        </section>
-      )
+      categories.map(({ name, tag, desc }) => {
+        const categoryPosts = sortedPosts.filter(({ data }) =>
+          data.tags.includes(tag)
+        );
+        return (
+          categoryPosts.length > 0 && (
+            <section id={tag} class="pt-12 pb-6 border-b border-border">
+              <div class="mb-4 flex items-end justify-between">
+                <div>
+                  <h2 class="text-2xl font-semibold tracking-wide">{name}</h2>
+                  <p class="mt-1 text-sm text-muted-foreground">{desc}</p>
+                </div>
+                <LinkButton href={`/tags/${tag}/`}>
+                  更多
+                  <IconArrowRight class="inline-block rtl:-rotate-180" />
+                </LinkButton>
+              </div>
+              <ul>
+                {categoryPosts
+                  .slice(0, CATEGORY_LIMIT)
+                  .map(data => <Card variant="h3" {...data} />)}
+              </ul>
+            </section>
+          )
+        );
+      })
     }
 
     <div class="my-8 text-center">
