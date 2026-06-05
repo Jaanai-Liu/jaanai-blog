@@ -24,7 +24,7 @@
               version = "1.0.0";
               src = self;
               fetcherVersion = 3;
-              hash = "sha256-ZwChr9RUD4o9i/33gSXXwelnBSWssjPDKjj1PHIcn4w=";
+              hash = "sha256-n5ZN2iJWH2aAGkepTV6aT48FnfqN8QNw+hb1PrR5F8k=";
             };
 
             buildPhase = ''
